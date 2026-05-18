@@ -861,23 +861,14 @@
     // ЗАМЕНИ 'ТВОЯ_КОД' с кода от formspree.io след регистрация
     const FORMSPREE_URL = 'https://formspree.io/f/xdajoqkl';
 
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name, phone, email, goals, notes })
-      });
-      if (res.ok) {
-        document.getElementById('formWrap').style.display = 'none';
-        document.getElementById('successMsg').classList.add('visible');
-      } else {
-        throw new Error('server error');
-      }
-    } catch(err) {
-      alert('Нещо се обърка. Моля, опитай отново.');
-      btn.textContent = 'Резервирай безплатната си консултация →';
-      btn.disabled = false;
-    }
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('successMsg').classList.add('visible');
+
+    fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, phone, email, goals, notes })
+    });
   }
 </script>
 
