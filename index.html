@@ -864,10 +864,16 @@
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('successMsg').classList.add('visible');
 
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('goals', goals);
+    formData.append('notes', notes);
+
     fetch(FORMSPREE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, phone, email, goals, notes })
+      body: formData
     });
   }
 </script>
