@@ -872,7 +872,7 @@
     formData.append('notes', notes || 'не е посочено');
 
     fetch(FORMSPREE_URL, {
-      method: 'POST',
+      method="POST",
       body: formData
     });
   }
