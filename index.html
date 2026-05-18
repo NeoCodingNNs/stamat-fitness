@@ -865,11 +865,11 @@
     document.getElementById('successMsg').classList.add('visible');
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('phone', phone);
+    formData.append('name', name || 'не е посочено');
+    formData.append('phone', phone || 'не е посочено');
     formData.append('email', email || 'не е посочен');
-    formData.append('goals', goals);
-    formData.append('notes', notes);
+    formData.append('goals', goals || 'не е посочено');
+    formData.append('notes', notes || 'не е посочено');
 
     fetch(FORMSPREE_URL, {
       method: 'POST',
