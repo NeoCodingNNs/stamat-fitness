@@ -867,7 +867,7 @@
     const formData = new FormData();
     formData.append('name', name);
     formData.append('phone', phone);
-    formData.append('email', email);
+    formData.append('email', email || 'не е посочен');
     formData.append('goals', goals);
     formData.append('notes', notes);
 
