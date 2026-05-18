@@ -859,7 +859,7 @@
     btn.disabled = true;
 
     // ЗАМЕНИ 'ТВОЯ_КОД' с кода от formspree.io след регистрация
-    const FORMSPREE_URL = 'https://formspree.io/f/xredgnjb';
+    const FORMSPREE_URL = 'https://formspree.io/f/xdajoqkl';
 
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('successMsg').classList.add('visible');
@@ -872,7 +872,7 @@
     formData.append('notes', notes || 'не е посочено');
 
     fetch(FORMSPREE_URL, {
-      method="POST",
+      method: 'POST',
       body: formData
     });
   }
