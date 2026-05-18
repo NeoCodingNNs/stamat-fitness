@@ -9,597 +9,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:       #0d0d0d;
-      --surface:  #151515;
-      --card:     #1b1b1b;
-      --accent:   #e8a020;
-      --accent2:  #ff5c2b;
-      --text:     #f0ece4;
-      --muted:    #888880;
-      --border:   rgba(232,160,32,.18);
+      --bg: #0d0d0d; --surface: #151515; --card: #1b1b1b;
+      --accent: #e8a020; --accent2: #ff5c2b;
+      --text: #f0ece4; --muted: #888880; --border: rgba(232,160,32,.18);
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 1000; opacity: .45;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      padding: 80px 60px 80px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(232,160,32,.12);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: .75rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 36px;
-      width: fit-content;
-      animation: fadeUp .8s ease both;
-    }
-
-    .badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 1.8s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .4; transform: scale(1.5); }
-    }
-
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: .9rem;
-      color: var(--muted);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      animation: fadeUp .8s .1s ease both;
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(72px, 8vw, 110px);
-      line-height: .92;
-      letter-spacing: .01em;
-      margin-bottom: 28px;
-      animation: fadeUp .8s .2s ease both;
-    }
-
-    h1 span {
-      -webkit-text-stroke: 1px var(--accent);
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 420px;
-      margin-bottom: 44px;
-      animation: fadeUp .8s .3s ease both;
-    }
-
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.65; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: .45; }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero-left { padding: 80px 60px 80px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,160,32,.12); border: 1px solid var(--border); color: var(--accent); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 36px; width: fit-content; animation: fadeUp .8s ease both; }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(1.5); } }
+    .hero-eyebrow { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .9rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; animation: fadeUp .8s .1s ease both; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: .92; letter-spacing: .01em; margin-bottom: 28px; animation: fadeUp .8s .2s ease both; }
+    h1 span { -webkit-text-stroke: 1px var(--accent); color: transparent; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 420px; margin-bottom: 44px; animation: fadeUp .8s .3s ease both; }
     .hero-sub strong { color: var(--text); font-weight: 500; }
-
-    .cta-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      animation: fadeUp .8s .4s ease both;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #0d0d0d;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: .95rem;
-      letter-spacing: .04em;
-      padding: 16px 32px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 8px 32px rgba(232,160,32,.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(232,160,32,.45);
-    }
-
-    .cta-note {
-      font-size: .82rem;
-      color: var(--muted);
-    }
-
-    /* hero right – photo panel */
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      filter: grayscale(20%) contrast(1.1);
-    }
-
-    /* placeholder when no real photo */
-    .hero-photo-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(160deg, #1e1e1e 0%, #111 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      color: var(--muted);
-      font-size: .85rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .hero-photo-placeholder svg {
-      width: 90px; height: 90px;
-      opacity: .25;
-    }
-
-    .hero-right::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--bg) 0%, transparent 30%),
-                  linear-gradient(to top, var(--bg) 0%, transparent 25%);
-    }
-
-    .hero-stat-strip {
-      position: absolute;
-      bottom: 48px; left: 0; right: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: flex-start;
-      gap: 48px;
-      padding: 0 80px;
-      animation: fadeUp .8s .55s ease both;
-    }
-
+    .cta-row { display: flex; align-items: center; gap: 20px; animation: fadeUp .8s .4s ease both; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0d0d0d; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .95rem; letter-spacing: .04em; padding: 16px 32px; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform .2s, box-shadow .2s; box-shadow: 0 8px 32px rgba(232,160,32,.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(232,160,32,.45); }
+    .cta-note { font-size: .82rem; color: var(--muted); }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: grayscale(20%) contrast(1.1); }
+    .hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, transparent 30%), linear-gradient(to top, var(--bg) 0%, transparent 25%); }
+    .hero-stat-strip { position: absolute; bottom: 48px; left: 0; right: 0; z-index: 10; display: flex; justify-content: flex-start; gap: 48px; padding: 0 80px; animation: fadeUp .8s .55s ease both; }
     .hero-stat { display: flex; flex-direction: column; gap: 2px; }
-    .hero-stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.4rem;
-      color: var(--accent);
-      line-height: 1;
-    }
+    .hero-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--accent); line-height: 1; }
     .hero-stat-label { font-size: .75rem; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; }
-
-    /* ── OFFER STRIP ── */
-    .offer-strip {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 80px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      overflow-x: auto;
-    }
-
-    .offer-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-
-    .offer-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: rgba(232,160,32,.1);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-
+    .offer-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 80px; display: flex; align-items: center; gap: 40px; overflow-x: auto; }
+    .offer-item { display: flex; align-items: center; gap: 12px; flex-shrink: 0; white-space: nowrap; }
+    .offer-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(232,160,32,.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
     .offer-item-text { font-size: .88rem; color: var(--text); }
     .offer-item-text span { color: var(--muted); display: block; font-size: .78rem; }
-
     .offer-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
-
-    /* ── SECTIONS ── */
     section { padding: 100px 80px; }
-
-    .section-label {
-      font-size: .72rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(42px, 5vw, 64px);
-      line-height: 1;
-      letter-spacing: .02em;
-      margin-bottom: 20px;
-    }
-
-    h2 em {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-top: 60px;
-    }
-
-    .about-img-wrap {
-      position: relative;
-    }
-
-    .about-img-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      pointer-events: none;
-    }
-
-    .about-photo {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      border-radius: 2px;
-      display: block;
-    }
-
-    .about-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--card);
-      border-radius: 2px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: .8rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .about-photo-placeholder svg { width: 60px; opacity: .2; }
-
-    .about-tag {
-      position: absolute;
-      bottom: -16px; right: -16px;
-      background: var(--accent);
-      color: #0d0d0d;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: .08em;
-      padding: 10px 18px;
-      border-radius: 4px;
-    }
-
+    .section-label { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 5vw, 64px); line-height: 1; letter-spacing: .02em; margin-bottom: 20px; }
+    h2 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap::before { content: ''; position: absolute; inset: -12px; border: 1px solid var(--border); border-radius: 4px; pointer-events: none; }
+    .about-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
+    .about-tag { position: absolute; bottom: -16px; right: -16px; background: var(--accent); color: #0d0d0d; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .08em; padding: 10px 18px; border-radius: 4px; }
     .about-body p { color: var(--muted); margin-bottom: 18px; font-size: 1rem; }
     .about-body p strong { color: var(--text); font-weight: 500; }
-
     .about-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
-    .about-list li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: .92rem; color: var(--text);
-    }
-    .about-list li::before {
-      content: '→';
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── CONSULTATION OFFER ── */
+    .about-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .92rem; color: var(--text); }
+    .about-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
     .offer-section { background: var(--surface); }
-
-    .offer-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 56px;
-    }
-
-    .offer-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 36px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .25s, transform .25s;
-    }
-
-    .offer-card:hover {
-      border-color: rgba(232,160,32,.5);
-      transform: translateY(-4px);
-    }
-
-    .offer-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0;
-      transition: opacity .25s;
-    }
-
+    .offer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .offer-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 36px 28px; position: relative; overflow: hidden; transition: border-color .25s, transform .25s; }
+    .offer-card:hover { border-color: rgba(232,160,32,.5); transform: translateY(-4px); }
+    .offer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity .25s; }
     .offer-card:hover::before { opacity: 1; }
-
     .offer-card-icon { font-size: 2rem; margin-bottom: 20px; }
-    .offer-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: .04em;
-      margin-bottom: 10px;
-    }
+    .offer-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: .04em; margin-bottom: 10px; }
     .offer-card p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
-
-    /* ── FORM ── */
-    .form-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
+    .form-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .form-intro .section-label { margin-bottom: 16px; }
-
-    .form-intro p {
-      color: var(--muted);
-      margin-top: 20px;
-      font-size: .95rem;
-    }
-
-    .form-intro .free-tag {
-      display: inline-block;
-      margin-top: 28px;
-      background: rgba(232,160,32,.1);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 1.6rem;
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: .08em;
-      padding: 12px 24px;
-      border-radius: 6px;
-    }
-
-    .contact-form {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 44px 40px;
-    }
-
-    .form-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: .05em;
-      margin-bottom: 30px;
-      color: var(--text);
-    }
-
+    .form-intro p { color: var(--muted); margin-top: 20px; font-size: .95rem; }
+    .form-intro .free-tag { display: inline-block; margin-top: 28px; background: rgba(232,160,32,.1); border: 1px solid var(--border); color: var(--accent); font-size: 1.6rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: .08em; padding: 12px 24px; border-radius: 6px; }
+    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 44px 40px; }
+    .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .05em; margin-bottom: 30px; color: var(--text); }
     .field { margin-bottom: 20px; }
-
-    .field label {
-      display: block;
-      font-size: .78rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .field input:not([type="checkbox"]),
-    .field select,
-    .field textarea {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: .95rem;
-      padding: 14px 16px;
-      border-radius: 6px;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-      appearance: none;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder { color: #555; }
-
-    .field input:not([type="checkbox"]):focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(232,160,32,.12);
-    }
-
+    .field label { display: block; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .field input:not([type="checkbox"]), .field select, .field textarea { width: 100%; background: var(--card); border: 1px solid var(--border); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: .95rem; padding: 14px 16px; border-radius: 6px; outline: none; transition: border-color .2s, box-shadow .2s; appearance: none; }
+    .field input::placeholder, .field textarea::placeholder { color: #555; }
+    .field input:not([type="checkbox"]):focus, .field select:focus, .field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,160,32,.12); }
     .field textarea { resize: vertical; min-height: 90px; }
-
     .field select { cursor: pointer; }
-    .field select option { background: var(--card); }
-
-    .goal-checkboxes {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .goal-checkbox {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      font-size: .92rem;
-      color: var(--text);
-    }
-
-    .goal-checkbox input[type="checkbox"] {
-      width: 18px; height: 18px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      accent-color: var(--accent);
-      cursor: pointer;
-      appearance: auto;
-      -webkit-appearance: auto;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #0d0d0d;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: .04em;
-      padding: 17px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 12px;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 8px 28px rgba(232,160,32,.28);
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(232,160,32,.4);
-    }
-
-    .form-note {
-      text-align: center;
-      font-size: .78rem;
-      color: var(--muted);
-      margin-top: 14px;
-    }
-
-    /* ── SUCCESS STATE ── */
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
+    .goal-checkboxes { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .goal-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92rem; color: var(--text); }
+    .goal-checkbox input[type="checkbox"] { width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0; accent-color: var(--accent); cursor: pointer; appearance: auto; -webkit-appearance: auto; }
+    .submit-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0d0d0d; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1rem; letter-spacing: .04em; padding: 17px; border: none; border-radius: 6px; cursor: pointer; margin-top: 12px; transition: transform .2s, box-shadow .2s; box-shadow: 0 8px 28px rgba(232,160,32,.28); }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(232,160,32,.4); }
+    .form-note { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 14px; }
+    .success-msg { display: none; text-align: center; padding: 40px 20px; }
     .success-msg.visible { display: block; }
-
-    .success-icon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-
-    .success-msg h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--accent);
-      letter-spacing: .05em;
-      margin-bottom: 10px;
-    }
-
+    .success-icon { font-size: 3rem; margin-bottom: 16px; }
+    .success-msg h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); letter-spacing: .05em; margin-bottom: 10px; }
     .success-msg p { color: var(--muted); font-size: .95rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 40px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: .08em;
-      color: var(--accent);
-    }
-
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .08em; color: var(--accent); }
     .footer-note { font-size: .8rem; color: var(--muted); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── RESPONSIVE ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { display: none; }
@@ -607,8 +104,7 @@
       .hero-stat-strip { padding: 0 28px; bottom: 32px; gap: 28px; }
       section { padding: 72px 28px; }
       .offer-strip { padding: 24px 28px; }
-      .about-grid,
-      .form-section { grid-template-columns: 1fr; gap: 44px; }
+      .about-grid, .form-section { grid-template-columns: 1fr; gap: 44px; }
       .offer-cards { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
       .contact-form { padding: 32px 24px; }
@@ -617,105 +113,49 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" id="top">
-
   <div class="hero-left">
     <div class="badge">Безплатна консултация</div>
     <p class="hero-eyebrow">Персонален фитнес треньор</p>
     <h1>ПРОМЕНИ<br><span>СЕБЕ СИ</span><br>СЕГА</h1>
-    <p class="hero-sub">
-      Резервирай <strong>безплатна индивидуална консултация</strong> с
-      Стамат и открий точния план за твоите цели — фитнес, хранене или
-      жизнен баланс.
-    </p>
+    <p class="hero-sub">Резервирай <strong>безплатна индивидуална консултация</strong> с Стамат и открий точния план за твоите цели — фитнес, хранене или жизнен баланс.</p>
     <div class="cta-row">
       <a href="#form" class="btn-primary">Резервирай безплатно →</a>
       <span class="cta-note">Без ангажимент.<br>100% безплатно.</span>
     </div>
   </div>
-
   <div class="hero-right">
-    <!--
-      ЗАМЕНИ PLACEHOLDER-А С ИСТИНСКА СНИМКА НА СТАМАТ:
-      <img src="images/stamat-hero.jpg" alt="Стамат – персонален треньор" class="hero-photo" />
-    -->
     <img src="images/hero-gym.png" alt="Фитнес зала" class="hero-photo" />
   </div>
-
   <div class="hero-stat-strip">
-    <div class="hero-stat">
-      <span class="hero-stat-num">200+</span>
-      <span class="hero-stat-label">Доволни клиенти</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">5г.</span>
-      <span class="hero-stat-label">Опит</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">100%</span>
-      <span class="hero-stat-label">Индивидуален подход</span>
-    </div>
+    <div class="hero-stat"><span class="hero-stat-num">200+</span><span class="hero-stat-label">Доволни клиенти</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">5г.</span><span class="hero-stat-label">Опит</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Индивидуален подход</span></div>
   </div>
-
 </section>
 
-<!-- ═══════════════════════════════ OFFER STRIP ═══════════════════════ -->
 <div class="offer-strip">
-  <div class="offer-item">
-    <div class="offer-icon">💪</div>
-    <div class="offer-item-text">Персонална тренировка<span>Планове само за теб</span></div>
-  </div>
+  <div class="offer-item"><div class="offer-icon">💪</div><div class="offer-item-text">Персонална тренировка<span>Планове само за теб</span></div></div>
   <div class="offer-divider"></div>
-  <div class="offer-item">
-    <div class="offer-icon">🥗</div>
-    <div class="offer-item-text">Хранителен режим<span>Здравословно и вкусно</span></div>
-  </div>
+  <div class="offer-item"><div class="offer-icon">🥗</div><div class="offer-item-text">Хранителен режим<span>Здравословно и вкусно</span></div></div>
   <div class="offer-divider"></div>
-  <div class="offer-item">
-    <div class="offer-icon">🧘</div>
-    <div class="offer-item-text">Духовен баланс<span>Ум, тяло и мотивация</span></div>
-  </div>
+  <div class="offer-item"><div class="offer-icon">🧘</div><div class="offer-item-text">Духовен баланс<span>Ум, тяло и мотивация</span></div></div>
   <div class="offer-divider"></div>
-  <div class="offer-item">
-    <div class="offer-icon">📱</div>
-    <div class="offer-item-text">Онлайн & на живо<span>Консултации по твоя график</span></div>
-  </div>
+  <div class="offer-item"><div class="offer-icon">📱</div><div class="offer-item-text">Онлайн & на живо<span>Консултации по твоя график</span></div></div>
 </div>
 
-<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
 <section id="about">
   <p class="section-label reveal">За мен</p>
   <h2 class="reveal">Запознай се с <em>треньора</em></h2>
-
   <div class="about-grid">
     <div class="about-img-wrap reveal">
-      <!--
-        ЗАМЕНИ С:
-        <img src="images/stamat-about.jpg" alt="Стамат" class="about-photo" />
-      -->
       <img src="images/stamat-about.jpg" alt="Стамат" class="about-photo" />
       <div class="about-tag">Стамат Петров</div>
     </div>
-
     <div class="about-body reveal">
-      <p>
-        Казвам се <strong>Стамат</strong> и съм сертифициран персонален треньор
-        с над 5 години опит в областта на фитнеса и здравословното хранене.
-        Работя индивидуално с всеки клиент, защото вярвам, че <strong>няма
-        универсална формула за успех</strong> — само твоята собствена.
-      </p>
-      <p>
-        Клиентите ми постигат реални резултати — не само физически, но и
-        по-голяма увереност, повече енергия и по-добро качество на живот.
-        Работя с хора от всички нива — начинаещи и напреднали.
-      </p>
-      <p>
-        Получих своята квалификация от… <!-- ПОПЪЛНИ СЕРТИФИКАТИТЕ СИ -->
-        и продължавам да се обучавам редовно, за да ти давам
-        <strong>най-актуалните и ефективни методи</strong>.
-      </p>
-
+      <p>Казвам се <strong>Стамат</strong> и съм сертифициран персонален треньор с над 5 години опит в областта на фитнеса и здравословното хранене. Работя индивидуално с всеки клиент, защото вярвам, че <strong>няма универсална формула за успех</strong> — само твоята собствена.</p>
+      <p>Клиентите ми постигат реални резултати — не само физически, но и по-голяма увереност, повече енергия и по-добро качество на живот. Работя с хора от всички нива — начинаещи и напреднали.</p>
+      <p>Продължавам да се обучавам редовно, за да ти давам <strong>най-актуалните и ефективни методи</strong>.</p>
       <ul class="about-list">
         <li>Сертифициран персонален треньор</li>
         <li>Специалист по хранене и здравословен начин на живот</li>
@@ -726,157 +166,84 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ OFFER CARDS ══════════════════════════ -->
 <section class="offer-section" id="offer">
   <p class="section-label reveal">Какво получаваш</p>
   <h2 class="reveal">Безплатната<br>консултация включва</h2>
-
   <div class="offer-cards">
-    <div class="offer-card reveal">
-      <div class="offer-card-icon">🎯</div>
-      <h3>Анализ на целите</h3>
-      <p>Разговаряме за твоите фитнес, здравословни или духовни цели и заедно определяме реалистичен план за постигането им.</p>
-    </div>
-    <div class="offer-card reveal">
-      <div class="offer-card-icon">📋</div>
-      <h3>Персонален план</h3>
-      <p>Получаваш насоки за тренировки и хранене, специално съобразени с твоето тяло, разпорядък и цели.</p>
-    </div>
-    <div class="offer-card reveal">
-      <div class="offer-card-icon">💬</div>
-      <h3>Отговори на въпроси</h3>
-      <p>Задай всичките си въпроси за фитнес, диети и начин на живот. Ще получиш честни, конкретни отговори — без клишета.</p>
-    </div>
+    <div class="offer-card reveal"><div class="offer-card-icon">🎯</div><h3>Анализ на целите</h3><p>Разговаряме за твоите фитнес, здравословни или духовни цели и заедно определяме реалистичен план за постигането им.</p></div>
+    <div class="offer-card reveal"><div class="offer-card-icon">📋</div><h3>Персонален план</h3><p>Получаваш насоки за тренировки и хранене, специално съобразени с твоето тяло, разпорядък и цели.</p></div>
+    <div class="offer-card reveal"><div class="offer-card-icon">💬</div><h3>Отговори на въпроси</h3><p>Задай всичките си въпроси за фитнес, диети и начин на живот. Ще получиш честни, конкретни отговори — без клишета.</p></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FORM ══════════════════════════════════ -->
 <section id="form">
   <div class="form-section">
     <div class="form-intro reveal">
       <p class="section-label">Запишем се</p>
       <h2>Твоята трансформация<br>започва <em>тук</em></h2>
-      <p>
-        Попълни формата и Стамат ще се свърже с теб в рамките на 24 часа,
-        за да уговорите удобен час за безплатната консултация.
-      </p>
+      <p>Попълни формата и Стамат ще се свърже с теб в рамките на 24 часа, за да уговорите удобен час за безплатната консултация.</p>
       <div class="free-tag">🎁 100% БЕЗПЛАТНО</div>
     </div>
-
     <div class="contact-form reveal">
       <p class="form-title">РЕЗЕРВИРАЙ КОНСУЛТАЦИЯ</p>
-
       <div id="formWrap">
-        <div class="field">
-          <label>Твоето Ime *</label>
-          <input type="text" id="name" placeholder="Иван Иванов" required />
-        </div>
-
-        <div class="field">
-          <label>Телефон *</label>
-          <input type="tel" id="phone" placeholder="+359 88 xxx xxxx" required />
-        </div>
-
-        <div class="field">
-          <label>Имейл</label>
-          <input type="email" id="email" placeholder="ivan@email.com" />
-        </div>
-
+        <div class="field"><label>Твоето Име *</label><input type="text" id="name" placeholder="Иван Иванов" /></div>
+        <div class="field"><label>Телефон *</label><input type="tel" id="phone" placeholder="+359 88 xxx xxxx" /></div>
+        <div class="field"><label>Имейл</label><input type="email" id="email" placeholder="ivan@email.com" /></div>
         <div class="field">
           <label>Твоите цели (можеш да избереш повече от едно)</label>
           <div class="goal-checkboxes">
-            <label class="goal-checkbox">
-              <input type="checkbox" value="fitness" /> 💪 Фитнес и физическа форма
-            </label>
-            <label class="goal-checkbox">
-              <input type="checkbox" value="nutrition" /> 🥗 Здравословно хранене
-            </label>
-            <label class="goal-checkbox">
-              <input type="checkbox" value="wellness" /> 🧘 Духовен баланс и благополучие
-            </label>
-            <label class="goal-checkbox">
-              <input type="checkbox" value="weight" /> ⚖️ Отслабване или качване на маса
-            </label>
+            <label class="goal-checkbox"><input type="checkbox" value="fitness" /> 💪 Фитнес и физическа форма</label>
+            <label class="goal-checkbox"><input type="checkbox" value="nutrition" /> 🥗 Здравословно хранене</label>
+            <label class="goal-checkbox"><input type="checkbox" value="wellness" /> 🧘 Духовен баланс и благополучие</label>
+            <label class="goal-checkbox"><input type="checkbox" value="weight" /> ⚖️ Отслабване или качване на маса</label>
           </div>
         </div>
-
-        <div class="field">
-          <label>Допълнително (незадължително)</label>
-          <textarea id="notes" placeholder="Разкажи ни малко повече за себе си — текущо ниво, специфични нужди или въпроси..."></textarea>
-        </div>
-
-        <button class="submit-btn" onclick="handleSubmit()">
-          Резервирай безплатната си консултация →
-        </button>
+        <div class="field"><label>Допълнително (незадължително)</label><textarea id="notes" placeholder="Разкажи ни малко повече за себе си..."></textarea></div>
+        <button class="submit-btn" onclick="handleSubmit()">Резервирай безплатната си консултация →</button>
         <p class="form-note">🔒 Твоите данни са защитени и няма да бъдат споделяни.</p>
       </div>
-
       <div class="success-msg" id="successMsg">
         <div class="success-icon">🎉</div>
         <h3>ПОЛУЧЕНО!</h3>
-        <p>Стамат ще се свърже с теб в рамките на 24 часа,<br>за да уговорите вашата безплатна консултация.</p>
+        <p>Стамат ще се свърже с теб в рамките на 24 часа.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ════════════════════════════════ -->
 <footer>
   <div class="footer-logo">СТАМАТ ФИТНЕС</div>
   <p class="footer-note">© 2024 Стамат Петров. Всички права запазени.</p>
 </footer>
 
 <script>
-  /* ── Scroll reveal ── */
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        observer.unobserve(e.target);
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* ── Form submit ── */
-  async function handleSubmit() {
+  function handleSubmit() {
     const name  = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const notes = document.getElementById('notes').value.trim();
+    const email = document.getElementById('email').value.trim() || 'не е посочен';
+    const notes = document.getElementById('notes').value.trim() || 'не е посочено';
+    const goals = [...document.querySelectorAll('.goal-checkbox input:checked')].map(cb => cb.value).join(', ') || 'не е посочено';
 
-    const goals = [...document.querySelectorAll('.goal-checkbox input:checked')]
-      .map(cb => cb.value).join(', ');
-
-    if (!name || !phone) {
-      alert('Моля, попълни името и телефонния си номер.');
-      return;
-    }
-
-    const btn = document.querySelector('.submit-btn');
-    btn.textContent = 'Изпращане...';
-    btn.disabled = true;
-
-    // ЗАМЕНИ 'ТВОЯ_КОД' с кода от formspree.io след регистрация
-    const FORMSPREE_URL = 'https://formspree.io/f/xdajoqkl';
+    if (!name || !phone) { alert('Моля, попълни името и телефонния си номер.'); return; }
 
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('successMsg').classList.add('visible');
 
-    const formData = new FormData();
-    formData.append('name', name || 'не е посочено');
-    formData.append('phone', phone || 'не е посочено');
-    formData.append('email', email || 'не е посочен');
-    formData.append('goals', goals || 'не е посочено');
-    formData.append('notes', notes || 'не е посочено');
+    const fd = new FormData();
+    fd.append('name', name);
+    fd.append('phone', phone);
+    fd.append('email', email);
+    fd.append('goals', goals);
+    fd.append('notes', notes);
 
-    fetch(FORMSPREE_URL, {
-      method: 'POST',
-      body: formData
-    });
+    fetch('https://formspree.io/f/xredgnjb', { method: 'POST', body: fd });
   }
 </script>
-
 </body>
 </html>
